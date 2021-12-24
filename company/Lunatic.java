@@ -28,15 +28,7 @@ public class Lunatic {
             }
         };
 
-        class Water{ //Локальный класс для воды
-            public String waterTitle = "водички."; //Поле для воды
-            public String giveWater(){ // Метод, вызывающий метод из интерфейса и метод giveDrink
-                return asking.ask() + "чтоб ему" + giveDrink() + waterTitle;
-            }
-        }
-        Water water = new Water();
-
-        public void nameIsNotKolosok(Characters k){ //Метод с обработкой исключения
+                public void nameIsNotKolosok(Characters k){ //Метод с обработкой исключения
             try{
                 if (Objects.equals(k.getName(),"Колосок")){
                     System.out.println("зовут Колосок и он живёт в деревне Нееловке ");
@@ -54,7 +46,14 @@ public class Lunatic {
             return Lunatic.this.comeToSenses()+ Characters.LUNATIC.getName() + " сообщил " + Characters.ASTRONAUTS.getName() + ", что его ";
         }
 
-        public String informWater(){ // Метод, вызывающий метод локального класса водичка
+        public String informWater(){
+            class Water{ //Локальный класс для воды
+                public String waterTitle = "водички."; //Поле для воды
+                public String giveWater(){ // Метод, вызывающий метод из интерфейса и метод giveDrink
+                    return asking.ask() + "чтоб ему" + giveDrink() + waterTitle;
+                }
+            }
+            Water water = new Water();// Метод, вызывающий метод локального класса водичка
             return water.giveWater();
         }
 
